@@ -1,0 +1,9 @@
+{
+  "merchantId": "",
+  "startDate": "",
+  "endDate": "",
+  "accountInfo":{
+    "encryptedData":"DEFINE_AT_RUNTIME",
+    "accountType": "PAN"
+  }
+}

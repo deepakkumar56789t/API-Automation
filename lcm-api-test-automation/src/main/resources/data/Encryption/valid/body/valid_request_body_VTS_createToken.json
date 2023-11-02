@@ -1,0 +1,37 @@
+{
+  "cardholderInfo":{
+    "name":"DEFINE_AT_RUNTIME",
+    "primaryAccountNumber":"FETCH_FROM_DATABASE",
+    "billingAddress":{
+      "postalCode":"DEFINE_AT_RUNTIME",
+      "line1":"DEFINE_AT_RUNTIME"
+    },
+    "highValueCustomer":false,
+    "expirationDate":{
+      "month":"FETCH_FROM_DATATABLE",
+      "year":"FETCH_FROM_DATATABLE"
+    }
+  },
+  "riskInformation":{
+    "visaTokenScore":"DEFINE_AT_RUNTIME",
+    "visaTokenDecisioning":"DEFINE_AT_RUNTIME",
+    "walletProviderAccountScore":"DEFINE_AT_RUNTIME",
+    "walletProviderDeviceScore":"DEFINE_AT_RUNTIME",
+    "walletProviderReasonCodes":"FETCH_FROM_DATATABLE",
+    "accountHolderName":"DEFINE_AT_RUNTIME"
+  },
+  "tokenInfo":{
+    "token":"DEFINE_AT_RUNTIME",
+    "tokenRequestorName":"FETCH_FROM_DATATABLE",
+    "tokenType":"FETCH_FROM_DATATABLE",
+    "tokenStatus":"INACTIVE",
+    "tokenExpirationDate":{
+      "month":"FETCH_FROM_DATATABLE",
+      "year":"FETCH_FROM_DATATABLE"
+    },
+    "tokenAssuranceMethod" : "00",
+    "numberOfActiveTokensForPAN":1,
+    "numberOfInactiveTokensForPAN":0,
+    "numberOfSuspendedTokensForPAN":0
+  }
+}

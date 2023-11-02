@@ -1,0 +1,1 @@
+jmeter -g X:\Voyager\JMeter\apache-jmeter-5.4.3\bin\Reports\Subscription\simple-data-writer001.csv -o X:\Voyager\JMeter\apache-jmeter-5.4.3\bin\Reports\Subscription\GetMerchantInfo\100

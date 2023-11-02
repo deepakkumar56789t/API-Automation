@@ -1,0 +1,41 @@
+{
+  "cardholderInfo":{
+    "primaryAccountNumber":"FETCH_FROM_DATABASE"
+  },
+  "riskInformation": {
+    "walletProviderRiskAssessment": "1",
+    "walletProviderRiskAssessmentVersion": "10",
+    "deviceBluetoothMac": "DEFINE_AT_RUNTIME",
+    "deviceIMEI": "DEFINE_AT_RUNTIME",
+    "deviceSerialNumber": "DEFINE_AT_RUNTIME",
+    "deviceTimeZone": "MST",
+    "deviceTimeZoneSetting": "NETWORK_SET",
+    "osID": "32535455454666656",
+    "simSerialNumber": "string",
+    "deviceLostMode": "999",
+    "daysSinceConsumerDataLastAccountChange": "9",
+    "walletProviderPANAge": "9",
+    "walletAccountHolderCardNameMatch": "y",
+    "accountToDeviceBindingAge": "DEFINE_AT_RUNTIME",
+    "userAccountFirstCreated": "DEFINE_AT_RUNTIME",
+    "provisioningAttemptsOnDeviceIn24Hours": "DEFINE_AT_RUNTIME",
+    "distinctCardholderNames": "DEFINE_AT_RUNTIME",
+    "deviceCountry": "IN",
+    "walletAccountCountry": "IN",
+    "suspendedCardsInAccount": "DEFINE_AT_RUNTIME",
+    "daysSinceLastAccountActivity": "DEFINE_AT_RUNTIME",
+    "numberOfTransactionsInLast12months": "DEFINE_AT_RUNTIME",
+    "numberOfActiveTokens": "DEFINE_AT_RUNTIME",
+    "deviceWithActiveTokens": "DEFINE_AT_RUNTIME",
+    "activeTokensOnAllDeviceForAccount": "DEFINE_AT_RUNTIME",
+    "accountHolderName": "DEFINE_AT_RUNTIME",
+    "visaTokenScore": "DEFINE_AT_RUNTIME",
+    "visaTokenDecisioning": "DEFINE_AT_RUNTIME",
+    "walletProviderAccountScore": "DEFINE_AT_RUNTIME",
+    "walletProviderDeviceScore": "DEFINE_AT_RUNTIME",
+    "walletProviderReasonCodes": "A1,A2"
+  },
+  "tokenInfo":{
+    "tokenRequestorName":"DEFINE_AT_RUNTIME"
+  }
+}

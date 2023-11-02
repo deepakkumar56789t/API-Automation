@@ -1,0 +1,17 @@
+{
+  "idvMethods":{
+    "idvMethod":[
+      {
+        "idvChannel":"SMS",
+        "idvContactInfo":"+918015522346"
+      },
+      {
+        "idvChannel":"EMAIL",
+        "idvContactInfo":"HeikeMoeller@rhyta.com"
+      }
+    ]
+  },
+  "accountInfo": {
+    "reasonCode":"0004"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "accountInfo":{
+    "account" :"InvalidData",
+    "accountType":"DEFINE_AT_RUNTIME",
+    "accountExpiry":"DEFINE_AT_RUNTIME",
+    "reasonCode":"DEFINE_AT_RUNTIME",
+    "servicesNeeded":{
+      "service":[
+        "TSP","ABU"
+      ]
+    }
+  },
+  "idvMethods":{
+    "idvMethod":[
+      {
+        "idvChannel":"SMS",
+        "idvContactInfo":"+918149960737"
+      },
+      {
+        "idvChannel":"EMAIL",
+        "idvContactInfo":"dpkum@nets.eu"
+      }
+    ]
+  }
+}

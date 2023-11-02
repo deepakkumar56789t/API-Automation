@@ -1,0 +1,26 @@
+{
+  "cardholderInfo":{
+    "cvv2":"DEFINE_AT_RUNTIME",
+    "name":"DEFINE_AT_RUNTIME",
+    "riskAssessmentScore":"DEFINE_AT_RUNTIME",
+    "primaryAccountNumber":"FETCH_FROM_DATABASE",
+    "billingAddress":{
+      "postalCode":"DEFINE_AT_RUNTIME",
+      "line1":"DEFINE_AT_RUNTIME"
+    },
+    "highValueCustomer":false,
+    "expirationDate":{
+      "month":"FETCH_FROM_DATABASE",
+      "year":"FETCH_FROM_DATABASE"
+    }
+  },
+  "riskInformation":{
+    "visaTokenScore":"DEFINE_AT_RUNTIME",
+    "visaTokenDecisioning":"DEFINE_AT_RUNTIME",
+    "riskAssessmentScore":"DEFINE_AT_RUNTIME",
+    "walletProviderAccountScore":"DEFINE_AT_RUNTIME",
+    "walletProviderDeviceScore":"DEFINE_AT_RUNTIME",
+    "walletProviderReasonCodes":"FETCH_FROM_DATATABLE",
+    "accountHolderName":"DEFINE_AT_RUNTIME"
+  }
+}

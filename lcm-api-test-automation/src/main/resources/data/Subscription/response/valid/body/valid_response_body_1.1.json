@@ -1,0 +1,188 @@
+{
+  "merchants": [
+    {
+      "merchantCategory": null,
+      "merchantName": "EDF ENERGY",
+      "tokenRequestorId": "0000000",
+      "totalTransactionCount": "2",
+      "lastTransactionDate": "2019-04-26",
+      "merchantId": "54421241",
+      "merchantBusinessId": "20599",
+      "merchantAddress": "TELEDOC 228 PARIS 12 PARIS 75012 PARIS FRANCE",
+      "merchantPhoneNumber": "0000000",
+      "merchantURL": "",
+      "merchantBusinessName": "EDF ENERGY",
+      "lastTransactionAmount": "400.0",
+      "lastTransactionCurrency": "GBP",
+      "lastTransactionTimeStamp": "2019-04-26 09:49:11.000",
+      "transactionDetails": [
+        {
+          "transactionCount": 2,
+          "transactionType": "MAIL_TELEPHONE",
+          "lastTransactionAmount": "400.0",
+          "lastTransactionCurrency": "GBP",
+          "lastTransactionTimeStamp": "2019-04-26 09:49:11.000"
+        }
+      ],
+      "CoFMerchant": "C"
+    },
+    {
+      "merchantCategory": null,
+      "merchantName": "EDF ENERGY",
+      "tokenRequestorId": "0000000",
+      "totalTransactionCount": "2",
+      "lastTransactionDate": "2019-04-26",
+      "merchantId": "54421241",
+      "merchantBusinessId": "20599",
+      "merchantAddress": "TELEDOC 228 PARIS 12 PARIS 75012 PARIS FRANCE",
+      "merchantPhoneNumber": "0000000",
+      "merchantURL": "",
+      "merchantBusinessName": "EDF ENERGY",
+      "lastTransactionAmount": "400.0",
+      "lastTransactionCurrency": "GBP",
+      "lastTransactionTimeStamp": "2019-04-26 09:49:11.000",
+      "transactionDetails": [
+        {
+          "transactionCount": 2,
+          "transactionType": "MAIL_TELEPHONE",
+          "lastTransactionAmount": "400.0",
+          "lastTransactionCurrency": "GBP",
+          "lastTransactionTimeStamp": "2019-04-26 09:49:11.000"
+        }
+      ],
+      "CoFMerchant": "C"
+    },
+    {
+      "merchantCategory": null,
+      "merchantName": "EDF ENERGY",
+      "tokenRequestorId": "0000000",
+      "totalTransactionCount": "11",
+      "lastTransactionDate": "2020-05-16",
+      "merchantId": "54421241",
+      "merchantBusinessId": "20599",
+      "merchantAddress": "TELEDOC 228 PARIS 12 PARIS 75012 PARIS FRANCE",
+      "merchantPhoneNumber": "0000000",
+      "merchantURL": "",
+      "merchantBusinessName": "EDF ENERGY",
+      "lastTransactionAmount": "198.0",
+      "lastTransactionCurrency": "USD",
+      "lastTransactionTimeStamp": "2020-05-16 15:36:28.000",
+      "transactionDetails": [
+        {
+          "transactionCount": 3,
+          "transactionType": "SCHEDULED_RECURRING",
+          "lastTransactionAmount": "345.08",
+          "lastTransactionCurrency": "GBP",
+          "lastTransactionTimeStamp": "2020-04-26 09:49:11.000"
+        },
+        {
+          "transactionCount": 4,
+          "transactionType": "INSTALLMENT",
+          "lastTransactionAmount": "180.99",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-02-18 16:40:10.000"
+        },
+        {
+          "transactionCount": 4,
+          "transactionType": "UNSCHEDULED_RECURRING",
+          "lastTransactionAmount": "198.0",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-05-16 15:36:28.000"
+        }
+      ],
+      "CoFMerchant": "C"
+    },
+    {
+      "merchantCategory": null,
+      "merchantName": "EDF ENERGY",
+      "tokenRequestorId": "0000000",
+      "totalTransactionCount": "4",
+      "lastTransactionDate": "2020-04-26",
+      "merchantId": "54421241",
+      "merchantBusinessId": "20599",
+      "merchantAddress": "TELEDOC 228 PARIS 12 PARIS 75012 PARIS FRANCE",
+      "merchantPhoneNumber": "0000000",
+      "merchantURL": "",
+      "merchantBusinessName": "EDF ENERGY",
+      "lastTransactionAmount": "400.0",
+      "lastTransactionCurrency": "GBP",
+      "lastTransactionTimeStamp": "2020-04-26 09:49:11.000",
+      "transactionDetails": [
+        {
+          "transactionCount": 2,
+          "transactionType": "MAIL_TELEPHONE",
+          "lastTransactionAmount": "400.0",
+          "lastTransactionCurrency": "GBP",
+          "lastTransactionTimeStamp": "2020-04-26 09:49:11.000"
+        },
+        {
+          "transactionCount": 2,
+          "transactionType": "ECOM_OTHER",
+          "lastTransactionAmount": "180.99",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-02-18 16:40:10.000"
+        },
+        {
+          "transactionCount": 3,
+          "transactionType": "AUTH_VERIFICATION",
+          "lastTransactionAmount": "159.0",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-05-16 15:36:28.000"
+        }
+      ],
+      "CoFMerchant": "C"
+    },
+    {
+      "merchantCategory": null,
+      "merchantName": "APL ITUNES COM BILL",
+      "tokenRequestorId": "00000000",
+      "totalTransactionCount": "1",
+      "lastTransactionDate": "2020-02-08",
+      "merchantId": "337186000108778",
+      "merchantBusinessId": "1624",
+      "merchantAddress": "",
+      "merchantPhoneNumber": "866-712-7753",
+      "merchantURL": "",
+      "merchantBusinessName": "ITUNES MUSIC STORE",
+      "lastTransactionAmount": "18.99",
+      "lastTransactionCurrency": "USD",
+      "lastTransactionTimeStamp": "2020-02-08 16:40:10.000",
+      "transactionDetails": [
+        {
+          "transactionCount": 1,
+          "transactionType": "ECOM_OTHER",
+          "lastTransactionAmount": "18.99",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-02-08 16:40:10.000"
+        }
+      ],
+      "CoFMerchant": "C"
+    },
+    {
+      "merchantCategory": null,
+      "merchantName": "BT  CAMPS  SOUTH CAROL",
+      "tokenRequestorId": "00000000",
+      "totalTransactionCount": "0",
+      "lastTransactionDate": "",
+      "merchantId": "000445199040996",
+      "merchantBusinessId": "2836",
+      "merchantAddress": "",
+      "merchantPhoneNumber": "",
+      "merchantURL": "www.citigroup.com",
+      "merchantBusinessName": "OTHER RECREATION SERVICES",
+      "lastTransactionAmount": "0",
+      "lastTransactionCurrency": null,
+      "lastTransactionTimeStamp": null,
+      "transactionDetails": [
+        {
+          "transactionCount": 1,
+          "transactionType": "AUTH_VERIFICATION",
+          "lastTransactionAmount": "159.0",
+          "lastTransactionCurrency": "USD",
+          "lastTransactionTimeStamp": "2020-05-11 15:36:28.000"
+        }
+      ],
+      "CoFMerchant": "E"
+    }
+  ]
+}

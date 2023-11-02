@@ -1,0 +1,8 @@
+{
+  "stopPaymentInfo": {
+    "startDate": "FETCH_FROM_DB",
+    "endDate": "FETCH_FROM_DB",
+    "stopPaymentType": "FETCH_FROM_DB",
+    "status": "FETCH_FROM_DB"
+  }
+}

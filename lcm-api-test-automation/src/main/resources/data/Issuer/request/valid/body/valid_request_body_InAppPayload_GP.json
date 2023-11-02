@@ -1,0 +1,15 @@
+{
+  "accountInfo": {
+    "account": "FETCH_FROM_TSP_FLOW",
+    "accountType": "FETCH_FROM_TSP_FLOW",
+    "accountExpiry": "FETCH_FROM_TSP_FLOW",
+    "reasonCode": "DEFINE_AT_RUNTIME"
+  },
+  "providerInfo": {
+    "clientWalletProvider": "FETCH_FROM_TSP_FLOW",
+    "clientWalletAccountID": "walletID",
+    "clientDeviceID": "FETCH_FROM_TSP_FLOW",
+    "clientAppID": "myApp",
+    "additionalIDV": "false"
+  }
+}

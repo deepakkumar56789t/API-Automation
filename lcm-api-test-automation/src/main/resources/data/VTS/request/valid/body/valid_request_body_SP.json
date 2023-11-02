@@ -1,0 +1,13 @@
+{
+  "tokenRequestorID":"DEFINE_AT_RUNTIME",
+  "tokenReferenceID":"DEFINE_AT_RUNTIME",
+  "panReferenceID":"FETCH_FROM_CSV",
+  "clientWalletAccountID":"FETCH_FROM_CSV",
+  "otpMethodIdentifier":"DEFINE_AT_RUNTIME",
+  "otpValue":"DEFINE_AT_RUNTIME",
+  "otpExpirationDate":"2020-05-21T10:52:36.000Z",
+  "deviceInfo":{
+    "deviceID":"DEFINE_AT_RUNTIME"
+  },
+  "encryptedData":"DEFINE_AT_RUNTIME"
+}

@@ -1,0 +1,19 @@
+{
+  "EXTERNAL_LOG_ID": "",
+  "LCM_REQUEST_ID": "",
+  "X_REQUEST_ID": "",
+  "API_CALL": "",
+  "ENDPOINT": "",
+  "HTTP_RESPONSE": "",
+  "STATUS": "",
+  "ACTION": "",
+  "EXTERNAL_REQUEST_PAYLOAD": "",
+  "EXTERNAL_RESPONSE_PAYLOAD": "",
+  "REQUEST_ADDITIONAL_DATA": "",
+  "RESPONSE_ADDITIONAL_DATA": "",
+  "CREATED_ON": "",
+  "CREATED_BY": "",
+  "MODIFIED_ON": "",
+  "MODIFIED_BY": "",
+  "EXTERNAL_REFERENCE_ID": ""
+}

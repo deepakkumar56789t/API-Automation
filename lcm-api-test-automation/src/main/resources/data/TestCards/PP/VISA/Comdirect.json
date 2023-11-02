@@ -1,0 +1,22 @@
+{
+  "vtsTestCards":[
+    {"accountRefType": "cardid", "account":"4871789912191273", "accountExpiry": "022028"}
+  ],
+  "vtcTestCards":[
+    {"accountType": "CARDID", "account":"234111227322460"},
+    {"accountType": "PAN", "account":"4871789912273220"}
+  ],
+  "deletedTestCard":[
+    {"accountRefType": "cardid", "account": "4871789912285844", "accountExpiry": "022028"},
+    {"accountRefType": "PAN", "account": "4871789912285844", "accountExpiry": "022028"}
+  ],
+  "suspendedTestCard":[
+    {"accountRefType": "cardid", "account": "4871789912937642", "accountExpiry": "032026"}
+  ],
+  "issuerTestCards": [
+    {"accountRefType":"cardid", "account":"4871789912191273"}
+  ],
+  "updateserviceTestCard":[
+    {"accountRefType": "cardid", "account": "4871789912191273"}
+  ]
+}

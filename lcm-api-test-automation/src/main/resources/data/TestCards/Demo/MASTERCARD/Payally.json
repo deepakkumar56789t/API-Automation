@@ -1,0 +1,17 @@
+{
+  "vtcTestCards":[
+    { "accountType": "PANREF","account": "7199657636215757097"}
+  ],
+  "mdesTestCards": [
+    { "accountRefType": "cardid","account": "5373290000000005","accountExpiry": "032024"  }
+  ],
+  "deletedTestCard": [
+  {"accountRefType": "cardid","account": "5374000050577300","accountExpiry": "072026"}
+],
+  "issuerTestCards": [
+    {"accountRefType":"cardid", "account":"5373290000000005"}
+  ],
+  "updateserviceTestCard": [
+    {"accountRefType":"pan","account":"5374000031752857"}
+  ]
+}

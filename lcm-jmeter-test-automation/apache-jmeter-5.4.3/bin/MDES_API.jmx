@@ -1,0 +1,1294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="MDES" enabled="true">
+      <stringProp name="TestPlan.comments">Load test suite for MDES</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Input Parameters" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="threadCount" elementType="Argument">
+            <stringProp name="Argument.name">threadCount</stringProp>
+            <stringProp name="Argument.value">25</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="environment" elementType="Argument">
+            <stringProp name="Argument.name">environment</stringProp>
+            <stringProp name="Argument.value">pp</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Setup" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="PP" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__P(environment,${environment})}&quot;.toUpperCase() == &quot;PP&quot; || &quot;${__P(environment,${environment})}&quot;.toUpperCase() == &quot;PREPROD&quot; || &quot;${__P(environment,${environment})}&quot;.toUpperCase() == &quot;PREPRODUCTION&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Prerequisite-Authorization" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="grant_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">grant_type</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">api-gateway-pp.paas-test.bbsas.no</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/token</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+              <collectionProp name="AuthManager.auth_list">
+                <elementProp name="" elementType="Authorization">
+                  <stringProp name="Authorization.url">https://api-gateway-pp.paas-test.bbsas.no/token</stringProp>
+                  <stringProp name="Authorization.username">01ou0aGvZyAZivVU29GYgbdObxka</stringProp>
+                  <stringProp name="Authorization.password">LoKsSAs0eRNRrPFofOb1FKIPif4a</stringProp>
+                  <stringProp name="Authorization.domain"></stringProp>
+                  <stringProp name="Authorization.realm"></stringProp>
+                </elementProp>
+              </collectionProp>
+              <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+            </AuthManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query">${__setProperty(access_token, ${access_token})};
+${__setProperty(X-Issuer-ID, DK-10057516701)};
+${__setProperty(X-Provider-ID, NETSCMS)};</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">${__setProperty(panLunar, 4871450077490998)};
+${__setProperty(encryptedDataLunarExpMonth, 10)};
+${__setProperty(encryptedDataLunarExpYear, 2023)};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+            <boolProp name="autocommit">true</boolProp>
+            <stringProp name="checkQuery">select 1 from dual</stringProp>
+            <stringProp name="connectionAge">5000</stringProp>
+            <stringProp name="connectionProperties"></stringProp>
+            <stringProp name="dataSource">pp</stringProp>
+            <stringProp name="dbUrl">jdbc:oracle:thin:@//no2-ktdb-5:1521/k2lcm_dg_rw_jdbc</stringProp>
+            <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+            <stringProp name="initQuery"></stringProp>
+            <boolProp name="keepAlive">true</boolProp>
+            <stringProp name="password">ls1467387259</stringProp>
+            <stringProp name="poolMax">0</stringProp>
+            <boolProp name="preinit">false</boolProp>
+            <stringProp name="timeout">10000</stringProp>
+            <stringProp name="transactionIsolation">DEFAULT</stringProp>
+            <stringProp name="trimInterval">60000</stringProp>
+            <stringProp name="username">LCM</stringProp>
+          </JDBCDataSource>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Demo" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__P(environment,${environment})}&quot;.toUpperCase() == &quot;DEMO&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Prerequisite-Authorization" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="grant_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">grant_type</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">api-gateway-pp.paas-test.bbsas.no</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/token</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+              <collectionProp name="AuthManager.auth_list">
+                <elementProp name="" elementType="Authorization">
+                  <stringProp name="Authorization.url">https://api-gateway-pp.paas-test.bbsas.no/token</stringProp>
+                  <stringProp name="Authorization.username">9IgNF8PRVHdjGYaffU1bt8Ogh8Ia</stringProp>
+                  <stringProp name="Authorization.password">onpi0ZoOYTushUO32057TuabRIQa</stringProp>
+                  <stringProp name="Authorization.domain"></stringProp>
+                  <stringProp name="Authorization.realm"></stringProp>
+                </elementProp>
+              </collectionProp>
+              <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+            </AuthManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query">${__setProperty(access_token, ${access_token})};
+${__setProperty(X-Issuer-ID, DK-10057516701)};
+${__setProperty(X-Provider-ID, NETSCMS)};</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">${__setProperty(panLunar, 4871450140623872)};
+${__setProperty(encryptedDataLunarExpMonth, 02)};
+${__setProperty(encryptedDataLunarExpYear, 2025)};</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+          <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+            <boolProp name="autocommit">true</boolProp>
+            <stringProp name="checkQuery">select 1 from dual</stringProp>
+            <stringProp name="connectionAge">5000</stringProp>
+            <stringProp name="connectionProperties"></stringProp>
+            <stringProp name="dataSource">demo</stringProp>
+            <stringProp name="dbUrl">jdbc:oracle:thin:@//vm-ppdb-134:1521/a2digi</stringProp>
+            <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+            <stringProp name="initQuery"></stringProp>
+            <boolProp name="keepAlive">true</boolProp>
+            <stringProp name="password">lc873652619</stringProp>
+            <stringProp name="poolMax">0</stringProp>
+            <boolProp name="preinit">false</boolProp>
+            <stringProp name="timeout">10000</stringProp>
+            <stringProp name="transactionIsolation">DEFAULT</stringProp>
+            <stringProp name="trimInterval">60000</stringProp>
+            <stringProp name="username">LCM_CUST</stringProp>
+          </JDBCDataSource>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetEncryptedData-AuthorizeService" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;cardAccountData&quot;: {&#xd;
+    &quot;accountNumber&quot;: &quot;5373290000000005&quot;,&#xd;
+    &quot;expiryMonth&quot;: &quot;03&quot;,&#xd;
+    &quot;expiryYear&quot;: &quot;24&quot;,&#xd;
+    &quot;securityCode&quot;: &quot;032&quot;&#xd;
+  },&#xd;
+  &quot;financialAccountData&quot;: {&#xd;
+    &quot;financialAccountId&quot;: &quot;500&quot;,&#xd;
+    &quot;interbankCardAssociationId&quot;: 0,&#xd;
+    &quot;countryCode&quot;: &quot;TN&quot;&#xd;
+  },&#xd;
+  &quot;accountHolderData&quot;: {&#xd;
+    &quot;accountHolderAddress&quot;: {&#xd;
+      &quot;line1&quot;: &quot;Schamberger Crossroad&quot;,&#xd;
+      &quot;line2&quot;: &quot;Little Ford&quot;,&#xd;
+      &quot;city&quot;: &quot;Larkinmouth&quot;,&#xd;
+      &quot;country&quot;: &quot;NZ&quot;,&#xd;
+      &quot;postalCode&quot;: &quot;758&quot;,&#xd;
+      &quot;countrySubdivision&quot;: &quot;PY&quot;&#xd;
+    },&#xd;
+    &quot;accountHolderName&quot;: &quot;Ricky&quot;,&#xd;
+    &quot;sourceIp&quot;: &quot;1.106.89.51&quot;,&#xd;
+    &quot;deviceLocation&quot;: &quot;2.3265&quot;,&#xd;
+    &quot;consumerIdentifier&quot;: &quot;c8e9994c-72ce-4100-b8d2-665c9b6edaf2&quot;&#xd;
+  },&#xd;
+  &quot;tokenData&quot;: {&#xd;
+    &quot;token&quot;: &quot;1665075658&quot;,&#xd;
+    &quot;expiryMonth&quot;: &quot;10&quot;,&#xd;
+    &quot;expiryYear&quot;: &quot;22&quot;,&#xd;
+    &quot;sequenceNumber&quot;: &quot;17&quot;&#xd;
+  },&#xd;
+  &quot;source&quot;: &quot;ACCOUNT_ON_FILE&quot;,&#xd;
+  &quot;paymentAccountReference&quot;: &quot;PS11C646031303690050480030076&quot;,&#xd;
+  &quot;panUniqueReference&quot;: null,&#xd;
+  &quot;dataValidUntilTimestamp&quot;: null&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">encryption-decryption-utility-lcm-t.paas-test.bbsas.no</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/lcm/mdes/encryption</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Get encrypted data for mdes authorize</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">encrypted_Key_Authorize</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.encryptedKey</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">encrypted_Value_Authorize</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.encryptedValue</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">publicKeyFingerprint_Authorize</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.publicKeyFingerprint</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">iv_Authorize</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.iv</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">oaep_HashingAlgorithm_Authorize</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.oaepHashingAlgorithm</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+          <stringProp name="BeanShellAssertion.query">${__setProperty(lunarPanRefID, V-2020040246611508247349)};
+${__setProperty(GPayTokenRequestor, 40010075001)};
+${__setProperty(encryptedKeyAuthorize, ${encrypted_Key_Authorize})};
+${__setProperty(encryptedValueAuthorize, ${encrypted_Value_Authorize})};
+${__setProperty(publicKeyFingerprintAuthorize, ${publicKeyFingerprint_Authorize})};
+${__setProperty(ivAuthorize, ${iv_Authorize})};
+${__setProperty(oaepHashingAlgorithmAuthorize, ${oaep_HashingAlgorithm_Authorize})};</stringProp>
+          <stringProp name="BeanShellAssertion.filename"></stringProp>
+          <stringProp name="BeanShellAssertion.parameters"></stringProp>
+          <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+        </BeanShellAssertion>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authorize - GREEN" enabled="true">
+        <stringProp name="TestPlan.comments">Issuer</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,${threadCount})}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Request ID" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">request_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Token Unique Reference" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">token_unique_ref</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Correlation Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">x_correlation_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Wallet Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999)}</stringProp>
+          <stringProp name="CounterConfig.end">999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">wallet_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="IMEI" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">imei</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Serial Number" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">serial_number</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC001A-AuthorizeGreen" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;${request_id}&quot;,&#xd;
+  &quot;services&quot;: [&#xd;
+    &quot;DIGITIZATION&quot;&#xd;
+  ],&#xd;
+  &quot;fundingAccountInfo&quot;: {&#xd;
+  	&quot;panUniqueReference&quot;: &quot;token_ref_${token_unique_ref}&quot;,&#xd;
+     &quot;encryptedPayload&quot;:{&#xd;
+         &quot;encryptedData&quot;:&quot;${__P(encryptedValueAuthorize)}&quot;,&#xd;
+         &quot;publicKeyFingerprint&quot;:&quot;${__P(publicKeyFingerprintAuthorize)}&quot;,&#xd;
+         &quot;encryptedKey&quot;:&quot;${__P(encryptedKeyAuthorize)}&quot;,&#xd;
+         &quot;oaepHashingAlgorithm&quot;:&quot;${__P(oaepHashingAlgorithmAuthorize)}&quot;,&#xd;
+         &quot;iv&quot;:&quot;${__P(ivAuthorize)}&quot;&#xd;
+      }&#xd;
+  },&#xd;
+  &quot;correlationId&quot;: &quot;${x_correlation_id}&quot;,&#xd;
+  &quot;tokenRequestorId&quot;: &quot;40010030273&quot;,&#xd;
+  &quot;walletId&quot;: &quot;${wallet_id}&quot;,&#xd;
+  &quot;paymentAppInstanceId&quot;: &quot;1b24f24a24ba98e27d43e345b532a245e4723d7&quot;,&#xd;
+  &quot;accountIdHash&quot;: &quot;5ae9c9890b326bd23bfa9db96&quot;,&#xd;
+  &quot;mobileNumberSuffix&quot;: &quot;1234&quot;,&#xd;
+  &quot;activeTokenCount&quot;: &quot;3&quot;,&#xd;
+  &quot;deviceInfo&quot;: {&#xd;
+    &quot;deviceName&quot;: &quot;My Phone&quot;,&#xd;
+    &quot;serialNumber&quot;: &quot;2F6D63&quot;,&#xd;
+    &quot;formFactor&quot;: &quot;PHONE&quot;,&#xd;
+    &quot;isoDeviceType&quot;: &quot;09&quot;,&#xd;
+    &quot;osName&quot;: &quot;ANDROID&quot;,&#xd;
+    &quot;osVersion&quot;: &quot;4.4&quot;,&#xd;
+    &quot;imei&quot;: &quot;352099001761481&quot;,&#xd;
+    &quot;msisdn&quot;: &quot;7307406945&quot;,&#xd;
+    &quot;paymentTypes&quot;: [&#xd;
+      &quot;NFC&quot;&#xd;
+    ],&#xd;
+    &quot;storageTechnology&quot;: &quot;SE&quot;,&#xd;
+    &quot;cardCaptureTechnology&quot;: &quot;CAMERA&quot;&#xd;
+  },&#xd;
+  &quot;walletProviderDecisioningInfo&quot;: {&#xd;
+    &quot;recommendedDecision&quot;: &quot;APPROVED&quot;,&#xd;
+    &quot;recommendationStandardVersion&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;deviceScore&quot;: &quot;3&quot;,&#xd;
+    &quot;accountScore&quot;: &quot;4&quot;,&#xd;
+    &quot;accountLifeTime&quot;: &quot;4&quot;,&#xd;
+    &quot;recommendationReasons&quot;: [&#xd;
+      &quot;ACCOUNT_TOO_NEW&quot;&#xd;
+    ]&#xd;
+  },&#xd;
+  &quot;tokenType&quot;: &quot;CLOUD&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">nets-lcm-mdes-interface-lcm-${environment}.lcm.paas-test.bbsas.no</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/lcm/1/0/authorizeService</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Request ID generator" enabled="true">
+            <stringProp name="CounterConfig.start">${__Random(0,9999999999)}</stringProp>
+            <stringProp name="CounterConfig.end">99999999999999</stringProp>
+            <stringProp name="CounterConfig.incr">2</stringProp>
+            <stringProp name="CounterConfig.name">x_request_id</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+            <stringProp name="TestPlan.comments">X Request ID generator</stringProp>
+          </CounterConfig>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Issuer-ID</stringProp>
+                <stringProp name="Header.value">DK-10057516701</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">SM_USER</stringProp>
+                <stringProp name="Header.value">visatokenservicescertout.visa.com </stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Request-ID</stringProp>
+                <stringProp name="Header.value">abcd${x_request_id}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <stringProp name="JSON_PATH">decision</stringProp>
+            <stringProp name="EXPECTED_VALUE">APPROVED</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>false</timestamp>
+              <success>true</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authorize - Yellow" enabled="true">
+        <stringProp name="TestPlan.comments">Issuer</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,${threadCount})}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Request ID" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">request_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Token Unique Reference" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">token_unique_ref</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Correlation Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">x_correlation_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Wallet Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999)}</stringProp>
+          <stringProp name="CounterConfig.end">999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">wallet_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="IMEI" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">imei</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Serial Number" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">serial_number</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC001B-AuthorizeYellow" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;${request_id}&quot;,&#xd;
+  &quot;services&quot;: [&#xd;
+    &quot;DIGITIZATION&quot;&#xd;
+  ],&#xd;
+  &quot;fundingAccountInfo&quot;: {&#xd;
+  	&quot;panUniqueReference&quot;: &quot;token_ref_${token_unique_ref}&quot;,&#xd;
+     &quot;encryptedPayload&quot;:{&#xd;
+         &quot;encryptedData&quot;:&quot;${__P(encryptedValueAuthorize)}&quot;,&#xd;
+         &quot;publicKeyFingerprint&quot;:&quot;${__P(publicKeyFingerprintAuthorize)}&quot;,&#xd;
+         &quot;encryptedKey&quot;:&quot;${__P(encryptedKeyAuthorize)}&quot;,&#xd;
+         &quot;oaepHashingAlgorithm&quot;:&quot;${__P(oaepHashingAlgorithmAuthorize)}&quot;,&#xd;
+         &quot;iv&quot;:&quot;${__P(ivAuthorize)}&quot;&#xd;
+      }&#xd;
+  },&#xd;
+  &quot;correlationId&quot;: &quot;${x_correlation_id}&quot;,&#xd;
+  &quot;tokenRequestorId&quot;: &quot;40010030273&quot;,&#xd;
+  &quot;walletId&quot;: &quot;${wallet_id}&quot;,&#xd;
+  &quot;paymentAppInstanceId&quot;: &quot;1b24f24a24ba98e27d43e345b532a245e4723d7&quot;,&#xd;
+  &quot;accountIdHash&quot;: &quot;5ae9c9890b326bd23bfa9db96&quot;,&#xd;
+  &quot;mobileNumberSuffix&quot;: &quot;1234&quot;,&#xd;
+  &quot;activeTokenCount&quot;: &quot;3&quot;,&#xd;
+  &quot;deviceInfo&quot;: {&#xd;
+    &quot;deviceName&quot;: &quot;My Phone&quot;,&#xd;
+    &quot;serialNumber&quot;: &quot;2F6D63&quot;,&#xd;
+    &quot;formFactor&quot;: &quot;PHONE&quot;,&#xd;
+    &quot;isoDeviceType&quot;: &quot;09&quot;,&#xd;
+    &quot;osName&quot;: &quot;ANDROID&quot;,&#xd;
+    &quot;osVersion&quot;: &quot;4.4&quot;,&#xd;
+    &quot;imei&quot;: &quot;352099001761481&quot;,&#xd;
+    &quot;msisdn&quot;: &quot;7307406945&quot;,&#xd;
+    &quot;paymentTypes&quot;: [&#xd;
+      &quot;NFC&quot;&#xd;
+    ],&#xd;
+    &quot;storageTechnology&quot;: &quot;SE&quot;,&#xd;
+    &quot;cardCaptureTechnology&quot;: &quot;CAMERA&quot;&#xd;
+  },&#xd;
+  &quot;walletProviderDecisioningInfo&quot;: {&#xd;
+    &quot;recommendedDecision&quot;: &quot;REQUIRE_ADDITIONAL_AUTHENTICATION&quot;,&#xd;
+    &quot;recommendationStandardVersion&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;deviceScore&quot;: &quot;3&quot;,&#xd;
+    &quot;accountScore&quot;: &quot;4&quot;,&#xd;
+    &quot;accountLifeTime&quot;: &quot;4&quot;,&#xd;
+    &quot;recommendationReasons&quot;: [&#xd;
+      &quot;ACCOUNT_TOO_NEW&quot;&#xd;
+    ]&#xd;
+  },&#xd;
+  &quot;tokenType&quot;: &quot;CLOUD&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">nets-lcm-mdes-interface-lcm-${environment}.lcm.paas-test.bbsas.no</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/lcm/1/0/authorizeService</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Request ID generator" enabled="true">
+            <stringProp name="CounterConfig.start">${__Random(0,9999999999)}</stringProp>
+            <stringProp name="CounterConfig.end">99999999999999</stringProp>
+            <stringProp name="CounterConfig.incr">2</stringProp>
+            <stringProp name="CounterConfig.name">x_request_id</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+            <stringProp name="TestPlan.comments">X Request ID generator</stringProp>
+          </CounterConfig>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Issuer-ID</stringProp>
+                <stringProp name="Header.value">DK-10057516701</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">SM_USER</stringProp>
+                <stringProp name="Header.value">visatokenservicescertout.visa.com </stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Request-ID</stringProp>
+                <stringProp name="Header.value">abcd${x_request_id}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <stringProp name="JSON_PATH">decision</stringProp>
+            <stringProp name="EXPECTED_VALUE">REQUIRE_ADDITIONAL_AUTHENTICATION</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>false</timestamp>
+              <success>true</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Authorize - RED" enabled="true">
+        <stringProp name="TestPlan.comments">Issuer</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,${threadCount})}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Request ID" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">request_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Token Unique Reference" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">token_unique_ref</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Correlation Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,99999999)}</stringProp>
+          <stringProp name="CounterConfig.end">99999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">x_correlation_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Wallet Id" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999)}</stringProp>
+          <stringProp name="CounterConfig.end">999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">wallet_id</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="IMEI" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">imei</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Serial Number" enabled="true">
+          <stringProp name="CounterConfig.start">${__Random(0,999999999999999)}</stringProp>
+          <stringProp name="CounterConfig.end">999999999999999</stringProp>
+          <stringProp name="CounterConfig.incr">2</stringProp>
+          <stringProp name="CounterConfig.name">serial_number</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC001C-AuthorizeRed" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;${request_id}&quot;,&#xd;
+  &quot;services&quot;: [&#xd;
+    &quot;DIGITIZATION&quot;&#xd;
+  ],&#xd;
+  &quot;fundingAccountInfo&quot;: {&#xd;
+  	&quot;panUniqueReference&quot;: &quot;token_ref_${token_unique_ref}&quot;,&#xd;
+     &quot;encryptedPayload&quot;:{&#xd;
+         &quot;encryptedData&quot;:&quot;${__P(encryptedValueAuthorize)}&quot;,&#xd;
+         &quot;publicKeyFingerprint&quot;:&quot;${__P(publicKeyFingerprintAuthorize)}&quot;,&#xd;
+         &quot;encryptedKey&quot;:&quot;${__P(encryptedKeyAuthorize)}&quot;,&#xd;
+         &quot;oaepHashingAlgorithm&quot;:&quot;${__P(oaepHashingAlgorithmAuthorize)}&quot;,&#xd;
+         &quot;iv&quot;:&quot;${__P(ivAuthorize)}&quot;&#xd;
+      }&#xd;
+  },&#xd;
+  &quot;correlationId&quot;: &quot;${x_correlation_id}&quot;,&#xd;
+  &quot;tokenRequestorId&quot;: &quot;40010030273&quot;,&#xd;
+  &quot;walletId&quot;: &quot;${wallet_id}&quot;,&#xd;
+  &quot;paymentAppInstanceId&quot;: &quot;1b24f24a24ba98e27d43e345b532a245e4723d7&quot;,&#xd;
+  &quot;accountIdHash&quot;: &quot;5ae9c9890b326bd23bfa9db96&quot;,&#xd;
+  &quot;mobileNumberSuffix&quot;: &quot;1234&quot;,&#xd;
+  &quot;activeTokenCount&quot;: &quot;3&quot;,&#xd;
+  &quot;deviceInfo&quot;: {&#xd;
+    &quot;deviceName&quot;: &quot;My Phone&quot;,&#xd;
+    &quot;serialNumber&quot;: &quot;2F6D63&quot;,&#xd;
+    &quot;formFactor&quot;: &quot;PHONE&quot;,&#xd;
+    &quot;isoDeviceType&quot;: &quot;09&quot;,&#xd;
+    &quot;osName&quot;: &quot;ANDROID&quot;,&#xd;
+    &quot;osVersion&quot;: &quot;4.4&quot;,&#xd;
+    &quot;imei&quot;: &quot;352099001761481&quot;,&#xd;
+    &quot;msisdn&quot;: &quot;7307406945&quot;,&#xd;
+    &quot;paymentTypes&quot;: [&#xd;
+      &quot;NFC&quot;&#xd;
+    ],&#xd;
+    &quot;storageTechnology&quot;: &quot;SE&quot;,&#xd;
+    &quot;cardCaptureTechnology&quot;: &quot;CAMERA&quot;&#xd;
+  },&#xd;
+  &quot;walletProviderDecisioningInfo&quot;: {&#xd;
+    &quot;recommendedDecision&quot;: &quot;DECLINED&quot;,&#xd;
+    &quot;recommendationStandardVersion&quot;: &quot;1.0.0&quot;,&#xd;
+    &quot;deviceScore&quot;: &quot;3&quot;,&#xd;
+    &quot;accountScore&quot;: &quot;4&quot;,&#xd;
+    &quot;accountLifeTime&quot;: &quot;4&quot;,&#xd;
+    &quot;recommendationReasons&quot;: [&#xd;
+      &quot;ACCOUNT_TOO_NEW&quot;&#xd;
+    ]&#xd;
+  },&#xd;
+  &quot;tokenType&quot;: &quot;CLOUD&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">nets-lcm-mdes-interface-lcm-${environment}.lcm.paas-test.bbsas.no</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/lcm/1/0/authorizeService</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="X Request ID generator" enabled="true">
+            <stringProp name="CounterConfig.start">${__Random(0,9999999999)}</stringProp>
+            <stringProp name="CounterConfig.end">99999999999999</stringProp>
+            <stringProp name="CounterConfig.incr">2</stringProp>
+            <stringProp name="CounterConfig.name">x_request_id</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+            <stringProp name="TestPlan.comments">X Request ID generator</stringProp>
+          </CounterConfig>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Issuer-ID</stringProp>
+                <stringProp name="Header.value">DK-10057516701</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">SM_USER</stringProp>
+                <stringProp name="Header.value">visatokenservicescertout.visa.com </stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Request-ID</stringProp>
+                <stringProp name="Header.value">abcd${x_request_id}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <stringProp name="JSON_PATH">decision</stringProp>
+            <stringProp name="EXPECTED_VALUE">DECLINED</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>false</timestamp>
+              <success>true</success>
+              <label>false</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="Teardown" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </PostThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cleanup" enabled="true">
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import org.apache.jmeter.threads.JMeterVariables; 
+	
+try {
+	//Clear all user defined variables
+	JMeterVariables clean = new JMeterVariables(); 
+	vars = clean;
+
+	props.remove(&quot;environment&quot;);
+	props.remove(&quot;access_token&quot;);
+	props.remove(&quot;X-Issuer-ID&quot;);
+	props.remove(&quot;X-Provider-ID&quot;);
+	props.remove(&quot;panLunar&quot;);
+	props.remove(&quot;encryptedDataLunarExpMonth&quot;);
+	props.remove(&quot;encryptedDataLunarExpYear&quot;);
+	props.remove(&quot;encryptedKeyAuthorize&quot;);
+	props.remove(&quot;encryptedValueAuthorize&quot;);
+	props.remove(&quot;publicKeyFingerprintAuthorize&quot;);
+	props.remove(&quot;ivAuthorize&quot;);
+	props.remove(&quot;oaepHashingAlgorithmAuthorize&quot;);
+} catch (Exception e) {
+	log.error(e.getMessage());
+}
+</stringProp>
+          <stringProp name="scriptLanguage">java</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

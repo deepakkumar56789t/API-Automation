@@ -1,0 +1,19 @@
+{
+  "cardholderInfo":{
+    "primaryAccountNumber":"FETCH_FROM_DATABASE"
+  },
+  "tokenInfo":{
+    "token":"DEFINE_AT_RUNTIME",
+    "tokenRequestorName":"FETCH_FROM_DATATABLE",
+    "tokenType":"FETCH_FROM_DATATABLE",
+    "tokenStatus":"ACTIVE",
+    "tokenExpirationDate":{
+      "month":"FETCH_FROM_DATATABLE",
+      "year":"FETCH_FROM_DATATABLE"
+    },
+    "tokenAssuranceMethod" : "00",
+    "numberOfActiveTokensForPAN":1,
+    "numberOfInactiveTokensForPAN":0,
+    "numberOfSuspendedTokensForPAN":0
+  }
+}

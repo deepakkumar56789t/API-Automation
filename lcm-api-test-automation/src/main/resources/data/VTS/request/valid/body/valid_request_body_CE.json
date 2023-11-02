@@ -1,0 +1,11 @@
+{
+  "tokenRequestorID" : "FETCH_FROM_DATABASE",
+  "tokenReferenceID" : "DEFINE_AT_RUNTIME",
+  "panReferenceID" : "FETCH_FROM_CSV",
+  "panSource" : "FETCH_FROM_DATATABLE",
+  "deviceInfo" : {
+    "deviceID" : "DEFINE_AT_RUNTIME",
+    "deviceLanguageCode" : "eng"
+  },
+  "encryptedData" : "DEFINE_AT_RUNTIME"
+}

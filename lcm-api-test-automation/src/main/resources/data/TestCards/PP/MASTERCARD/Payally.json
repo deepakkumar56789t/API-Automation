@@ -1,0 +1,15 @@
+{
+    "mdesTestCards": [
+      {"accountRefType": "cardid","account": "5374000000000007","accountExpiry": "032023"}
+  ],
+  "deletedTestCard": [
+    {"accountRefType": "cardid","account": "5374000000000080","accountExpiry": "092024"}
+  ],
+  "issuerTestCards": [
+  {"accountRefType":"cardid", "account":"5374000000000007"}
+],
+  "updateserviceTestCard": [
+    {"accountRefType":"panref","account":"5373290035274161"}
+  ]
+}
+

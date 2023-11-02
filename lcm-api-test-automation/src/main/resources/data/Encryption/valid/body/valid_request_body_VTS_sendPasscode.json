@@ -1,0 +1,8 @@
+{
+  "cardholderInfo":{
+    "primaryAccountNumber":"FETCH_FROM_DATABASE"
+  },
+  "tokenInfo":{
+    "tokenRequestorName":"DEFINE_AT_RUNTIME"
+  }
+}

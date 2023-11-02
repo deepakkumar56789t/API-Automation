@@ -1,0 +1,19 @@
+{
+  "panReferenceID":"FETCH_FROM_CSV",
+  "walletAccountEmailAddressHash":"FETCH_FROM_CSV",
+  "clientWalletAccountID":"FETCH_FROM_CSV",
+  "panSource":"FETCH_FROM_DATATABLE",
+  "cvv2ResultsCode":"M",
+  "encryptedData":"DEFINE_AT_RUNTIME",
+  "deviceInfo":{
+    "deviceType":"DEFINE_AT_RUNTIME",
+    "deviceNumber":"DEFINE_AT_RUNTIME",
+    "deviceLanguageCode":"eng",
+    "deviceLocation":"123/-09878768761",
+    "deviceIPAddressV4":"10.240.2.123",
+    "tokenProtectionMethod":"SOFTWARE"
+  },
+  "tokenInfo":{
+    "tokenType":"FETCH_FROM_DATATABLE"
+  }
+}

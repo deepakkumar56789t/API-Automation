@@ -1,0 +1,14 @@
+{
+  "activationCode": "DEFINE_AT_RUNTIME",
+  "activationMethod": {
+    "type": "TEXT_TO_CARDHOLDER_NUMBER",
+    "value": "DEFINE_AT_RUNTIME"
+  },
+  "correlationId": "DEFINE_AT_RUNTIME",
+  "expirationDateTime": "2016-07-04T19:08:56.123Z",
+  "reasonCodes": [
+    "ADD_CARD"
+  ],
+  "requestId": "DEFINE_AT_RUNTIME",
+  "tokenUniqueReference": "DEFINE_AT_RUNTIME"
+}

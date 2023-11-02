@@ -1,0 +1,5 @@
+X-Issuer-ID,FI-10059432101
+X-Request-ID,DEFINE_AT_RUNTIME
+X-Provider-ID,NETSCMS
+stop_payment_id,0123456789
+realTimeData,true

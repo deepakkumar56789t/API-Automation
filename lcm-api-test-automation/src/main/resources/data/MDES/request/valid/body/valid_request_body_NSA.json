@@ -1,0 +1,50 @@
+{
+  "accountPanSuffix": "1234",
+  "consumerLanguage": "en",
+  "decision": "FETCH_FROM_DATATABLE",
+  "decisionMadeBy": "RULES",
+  "numberOfActivationAttempts": 1,
+  "numberOfActiveTokens": 2,
+  "productConfigurationId": "1234",
+  "secureElementId": "1b24f24a24ba98e27d43e345b532a245e4723d7a9c4f624e93452c",
+  "serviceRequestDateTime": "DEFINE_AT_RUNTIME",
+  "termsAndConditionsAcceptedTimestamp": "DEFINE_AT_RUNTIME",
+  "termsAndConditionsAssetId": "a9f027e5-629d-11e3-949a-0800200c9a66",
+  "tokenActivatedDateTime": "DEFINE_AT_RUNTIME",
+  "tokenAssuranceLevel": 1,
+  "requestId": "DEFINE_AT_RUNTIME",
+  "services": [
+    "DIGITIZATION"
+  ],
+  "fundingAccountInfo": {
+    "panUniqueReference": "DEFINE_AT_RUNTIME",
+    "tokenUniqueReference": "DEFINE_AT_RUNTIME",
+    "encryptedPayload": {
+      "encryptedData": "DEFINE_AT_RUNTIME",
+      "iv": "DEFINE_AT_RUNTIME",
+      "encryptedKey": "DEFINE_AT_RUNTIME",
+      "publicKeyFingerprint": "DEFINE_AT_RUNTIME",
+      "oaepHashingAlgorithm": "SHA256"
+    }
+  },
+  "correlationId": "DEFINE_AT_RUNTIME",
+  "tokenRequestorId": "DEFINE_AT_RUNTIME",
+  "walletId": "DEFINE_AT_RUNTIME",
+  "paymentAppInstanceId": "1b24f24a24ba98e27d43e345b532a245e4723d7",
+  "deviceInfo": {
+    "deviceName": "DEFINE_AT_RUNTIME",
+    "serialNumber": "DEFINE_AT_RUNTIME",
+    "formFactor": "PHONE",
+    "isoDeviceType": "09",
+    "osName": "ANDROID",
+    "osVersion": "4.4",
+    "imei": "DEFINE_AT_RUNTIME",
+    "msisdn": "DEFINE_AT_RUNTIME",
+    "paymentTypes": [
+      "NFC"
+    ],
+    "storageTechnology": "SE",
+    "cardCaptureTechnology": "CAMERA"
+  },
+  "tokenType": "FETCH_FROM_DATATABLE"
+}

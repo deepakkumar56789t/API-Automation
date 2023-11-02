@@ -1,0 +1,9 @@
+{
+  "requestId":"DEFINE_AT_RUNTIME",
+  "tokens":[
+    {
+      "tokenUniqueReference":"DEFINE_AT_RUNTIME",
+      "status":"DEFINE_AT_RUNTIME"
+    }],
+  "reasonCode":"STATUS_UPDATE"
+}

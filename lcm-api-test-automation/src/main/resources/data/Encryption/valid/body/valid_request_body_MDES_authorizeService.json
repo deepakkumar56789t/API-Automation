@@ -1,0 +1,37 @@
+{
+  "cardAccountData": {
+    "accountNumber": "FETCH_FROM_DATABASE",
+    "expiryMonth": "FETCH_FROM_DATABASE",
+    "expiryYear": "FETCH_FROM_DATABASE",
+    "securityCode": "032"
+  },
+  "financialAccountData": {
+    "financialAccountId": "500",
+    "interbankCardAssociationId": 0,
+    "countryCode": "TN"
+  },
+  "accountHolderData": {
+    "accountHolderAddress": {
+      "line1": "DEFINE_AT_RUNTIME",
+      "line2": "DEFINE_AT_RUNTIME",
+      "city": "DEFINE_AT_RUNTIME",
+      "country": "DEFINE_AT_RUNTIME",
+      "postalCode": "DEFINE_AT_RUNTIME",
+      "countrySubdivision": "DEFINE_AT_RUNTIME"
+    },
+    "accountHolderName": "DEFINE_AT_RUNTIME",
+    "sourceIp": "1.106.89.51",
+    "deviceLocation": "2.3265",
+    "consumerIdentifier": "c8e9994c-72ce-4100-b8d2-665c9b6edaf2"
+  },
+  "tokenData": {
+    "token": "DEFINE_AT_RUNTIME",
+    "expiryMonth": "DEFINE_AT_RUNTIME",
+    "expiryYear": "DEFINE_AT_RUNTIME",
+    "sequenceNumber": "17"
+  },
+  "source": "FETCH_FROM_DATATABLE",
+  "paymentAccountReference": "PS11C646031303690050480030076",
+  "panUniqueReference": null,
+  "dataValidUntilTimestamp": null
+}

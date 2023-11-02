@@ -1,0 +1,6 @@
+{
+  "vtsTestCards":[
+    {"accountRefType": "cardid", "account":"4871450044904311", "accountExpiry": "122024"},
+    {"accountRefType": "cardid", "account":"4871450322767596", "accountExpiry": "102025"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "c2pTestCards":[
+    {"accountRefType": "cardid", "account":"4243910157688044", "accountExpiry": "062027"},
+    {"accountRefType": "cardid", "account":"4243910000729078", "accountExpiry": "042025"}
+  ],
+  "vtsTestCards":[
+    {"accountRefType": "cardid", "account":"", "accountExpiry": ""},
+    {"accountRefType": "cardid", "account":"", "accountExpiry": ""}
+  ],
+  "vtcTestCards":[
+    {"accountType": "CARDID", "account":""},
+    {"accountType": "PAN", "account":""}
+  ],
+  "deletedTestCard":[
+    {"accountRefType": "cardid", "account": "", "accountExpiry": ""},
+    {"accountRefType": "PAN", "account": "", "accountExpiry": ""}
+  ],
+  "suspendedTestCard":[
+    {"accountRefType": "cardid", "account": "", "accountExpiry": ""}
+  ],
+  "issuerTestCards": [
+    {"accountRefType":"cardid", "account":""}
+  ],
+  "updateserviceTestCard":[
+    {"accountRefType": "cardid", "account": ""}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "tokenRequestorID":"DEFINE_AT_RUNTIME",
+  "tokenReferenceID":"DEFINE_AT_RUNTIME",
+  "panReferenceID":"FETCH_FROM_CSV",
+  "clientWalletAccountID":"FETCH_FROM_CSV",
+  "otpReason":"PROVISIONING",
+  "otpMaxReached":false,
+  "deviceInfo":{
+    "deviceID":"DEFINE_AT_RUNTIME",
+    "deviceType":"WATCH"
+  },
+  "encryptedData":"DEFINE_AT_RUNTIME"
+}

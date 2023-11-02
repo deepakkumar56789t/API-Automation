@@ -1,0 +1,18 @@
+{
+  "c2pTestCards":[
+    {"accountRefType": "cardid", "account":"4871440450335290", "accountExpiry": "122029"}
+  ],
+  "vtsTestCards":[
+    {"accountRefType": "cardid", "account":"4871440154350033", "accountExpiry": "112025"},
+    {"accountRefType": "cardid", "account":"4871440433096894", "accountExpiry": "022026"}
+  ],
+  "issuerTestCards": [
+    {"accountRefType":"cardid","account":"4871450011000143"}
+  ],
+  "deletedTestCard":[
+    {"accountRefType": "cardid", "account": "4871450011000143", "accountExpiry": "022028"}
+  ],
+  "updateserviceTestCard":[
+    {"accountRefType": "cardid", "account": "4871440149481679"}
+  ]
+}

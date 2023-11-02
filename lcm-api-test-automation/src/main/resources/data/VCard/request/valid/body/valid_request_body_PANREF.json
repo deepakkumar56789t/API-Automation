@@ -1,0 +1,8 @@
+{
+  "accountInfo":{
+    "account":"FETCH_FROM_DATABASE",
+    "accountType":"PANREF"
+  },
+  "appSessionID":"DEFINE_AT_RUNTIME",
+  "imagePage":1
+}

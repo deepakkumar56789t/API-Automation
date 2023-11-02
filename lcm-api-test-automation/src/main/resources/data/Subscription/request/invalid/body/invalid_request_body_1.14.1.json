@@ -1,0 +1,7 @@
+{
+  "accountInfo":{
+    "encryptedData":"",
+    "accountType": "PAN"
+  },
+  "includeInactive": false
+}

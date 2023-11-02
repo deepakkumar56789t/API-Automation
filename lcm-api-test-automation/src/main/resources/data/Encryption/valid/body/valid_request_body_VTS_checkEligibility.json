@@ -1,0 +1,12 @@
+{
+  "cardholderInfo":{
+    "primaryAccountNumber":"FETCH_FROM_DATABASE",
+    "name":"DEFINE_AT_RUNTIME",
+    "highValueCustomer":"false",
+    "riskAssessmentScore":"DEFINE_AT_RUNTIME",
+    "expirationDate":{
+      "month":"FETCH_FROM_DATABASE",
+      "year":"FETCH_FROM_DATABASE"
+    }
+  }
+}

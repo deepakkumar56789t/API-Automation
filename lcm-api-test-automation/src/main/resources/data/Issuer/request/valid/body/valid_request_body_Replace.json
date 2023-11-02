@@ -1,0 +1,9 @@
+{
+  "accountAction":"REPLACE",
+  "accountInfo":
+    {
+      "account":"FETCH_FROM_CSV",
+      "accountType":"FETCH_FROM_CSV",
+      "reasonCode":"DEFINE_AT_RUNTIME"
+    }
+}

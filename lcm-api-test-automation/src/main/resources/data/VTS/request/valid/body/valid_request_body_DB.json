@@ -1,0 +1,15 @@
+{
+  "panReferenceID":"FETCH_FROM_CSV",
+  "walletAccountEmailAddressHash":"FETCH_FROM_CSV",
+  "clientWalletAccountID":"FETCH_FROM_CSV",
+  "deviceInfo":{
+    "deviceID":"DEFINE_AT_RUNTIME",
+    "deviceLanguageCode":"eng",
+    "deviceType":"MOBILEPHONE_OR_TABLET",
+    "deviceName":"DEFINE_AT_RUNTIME",
+    "deviceLocation":"+51/-0",
+    "deviceIPAddressV4":"81.144.225.139",
+    "deviceIndex": "DEFINE_AT_RUNTIME"
+  },
+  "tokenRequestorName":"FETCH_FROM_DATATABLE"
+}

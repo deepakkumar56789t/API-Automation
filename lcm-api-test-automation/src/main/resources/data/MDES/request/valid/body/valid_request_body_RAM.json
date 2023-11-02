@@ -1,0 +1,27 @@
+{
+  "requestId": "DEFINE_AT_RUNTIME",
+  "correlationId": "DEFINE_AT_RUNTIME",
+  "walletId": "DEFINE_AT_RUNTIME",
+  "tokenRequestorId": "FETCH_FROM_DATABASE",
+  "paymentAppInstanceId": "1b24f24a24ba98e27d43e345b532a245e4723d7",
+  "accountIdHash": "5ae9c9890b326bd23bfa9db96",
+  "mobileNumberSuffix": "1234",
+  "tokenType": "FETCH_FROM_DATABASE",
+  "services": [
+    "DIGITIZATION"
+  ],
+  "reasonCodes": [
+    "ADD_CARD"
+  ],
+  "fundingAccountInfo": {
+    "panUniqueReference": "DEFINE_AT_RUNTIME",
+    "tokenUniqueReference": "DEFINE_AT_RUNTIME",
+    "encryptedPayload": {
+      "encryptedData": "DEFINE_AT_RUNTIME",
+      "iv": "DEFINE_AT_RUNTIME",
+      "encryptedKey": "DEFINE_AT_RUNTIME",
+      "publicKeyFingerprint": "DEFINE_AT_RUNTIME",
+      "oaepHashingAlgorithm": "SHA256"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "accountInfo":{
+    "encryptedData":"eyJ0eXAiOiJKT1NFIiwiZW5jIjoiQTI1NkdDTSIsImlhdCI6MTY1Mzk5NTUxNSwiYWxnIjoiUlNBLU9BRVAtMjU2Iiwia2lkIjoiMTIzNDUifQ.fkPZq72a1YOCLFwHRCcNkpxZvG3qB7bNuYaslchKHZvH7Bq3dH2E1_IlcVF11g1eRmZaj_VoYUnglK7up7r8kBVg4abvI2dhuvm85XKhflsicgUndgwfjwczxpq8WOkhQMbLkdaIX7DPVyIfGfEQfF3yqvMVkmRkC5RsiEMkNE8PaXUNPWb_NqWLvuS9gZAS22LfYaIkm_2cXEv_3qClsWOOPNVoWCnyJXiT7jIpJ0HD1w_Br-59-9LilaI7jnu7vjiJ0w5ONW-SF0n1jdJ_y4HZ5tlAiiV_ayE0VYufaKDRRJTBFnVIn6qFyXVQet3_JHCsR1BU8aGPCryiUngfCg.pS6e9zXgwwikHZJk.N6LAnzqB4XMSsHCxXceHVg8y6l-AmPUrtxrdxgCs.rDs2v3fzoX6SZUvIyh3bUATest",
+    "accountType": "PAN"
+  },
+  "includeInactive": false
+}

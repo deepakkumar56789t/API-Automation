@@ -1,0 +1,10 @@
+{
+    "accountInfo": {
+      "accountType":"FETCH_FROM_DATATABLE"
+    },
+    "paymentInstrumentProvider": {
+    "isIDnV": "true",
+    "tokenRequestorID": "DEFINE_AT_RUNTIME",
+    "clientDeviceID": "DEFINE_AT_RUNTIME"
+  }
+}

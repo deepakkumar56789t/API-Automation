@@ -1,0 +1,22 @@
+{
+  "panReferenceID":"FETCH_FROM_CSV",
+  "walletAccountEmailAddressHash":"FETCH_FROM_CSV",
+  "clientWalletAccountID":"FETCH_FROM_CSV",
+  "panSource":"FETCH_FROM_DATATABLE",
+  "encryptedData":"DEFINE_AT_RUNTIME",
+  "deviceInfo":{
+    "deviceID":"DEFINE_AT_RUNTIME",
+    "deviceLanguageCode":"eng",
+    "deviceType":"MOBILEPHONE_OR_TABLET",
+    "deviceName":"DEFINE_AT_RUNTIME",
+    "deviceLocation":"+51/-0",
+    "deviceIPAddressV4":"81.144.225.139"
+  },
+  "messageReasonCode":"FETCH_FROM_DATATABLE",
+  "termsAndConditions":{
+    "id":"5ad519dd577a4faca315319683ca0ebe",
+    "date":"2020-01-21T15:27:35.000+0000"
+  },
+  "dateTimeOfEvent":"2020-01-21T15:27:36.000Z",
+  "actionCode":"00"
+}

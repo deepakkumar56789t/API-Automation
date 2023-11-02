@@ -1,0 +1,11 @@
+{
+  "accountAction":"DEFINE_AT_RUNTIME",
+  "accountInfo":{
+    "reasonCode":"DEFINE_AT_RUNTIME",
+    "servicesNeeded":{
+      "service":[
+        "DEFINE_AT_RUNTIME"
+      ]
+    }
+  }
+}
